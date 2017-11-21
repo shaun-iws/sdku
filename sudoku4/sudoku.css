@@ -1,0 +1,89 @@
+/**********************************************************************
+ * Copyright (c)- 2005 - Bronstee.com Software & Services and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the 
+ * GNU General Public License (GPL) Version 2, June 1991, 
+ * which accompanies this distribution, and is available at: 
+ * http://www.opensource.org/licenses/gpl-license.php
+ * 
+ * Contributors:
+ * Ghica van Emde Boas - original author, Sept 2005
+ * <contributor2> - <description of contribution>
+ *     ...
+ *********************************************************************/
+body {background-color: white;
+	text-align: center;
+}
+
+input { 
+	font-style: bold; width:35px;
+	font-size: 10px;
+	height: 30px; 
+}
+
+input[text] { 
+	font-family: "Courier New"; font-style: bold; width:35px;
+	font-size: 10px;
+	height: 30px; border-style:solid; border-color: blue; border-width: 1px;
+}
+
+
+div.formbuttons {
+	text-align: center;
+	border-style: solid; border-width: 1px;
+}
+
+form {
+	text-align: center;
+}
+
+table {
+	border-color: lightgrey;
+	text-align: center; 
+	border-style: solid; border-width: 1px;
+}
+
+table.inner {
+	border-color: lightgrey;
+	text-align: center; 
+	border-style: solid; border-width: 1px;
+}
+
+
+table.outer {
+	background-color: white; width:auto;
+	text-align: center; 
+	border-style: none; border-width: 1px; border-color: red;
+}
+
+td {
+	font-family: "Courier New"; font-style: bold; width:30%; height:30%;
+	text-align: center; background-color: white;
+	font-size: 30px;
+}
+
+div.sudoku {
+    width: auto;  border-style: solid; border-width: 1px; padding: 10px;
+	text-align: center;
+}
+
+.ncell {
+	width: 35px; height: 35px;
+	padding: 2px;
+	border-style: solid; border-width: 1px;
+	text-align: center;
+}
+
+.scell {
+	width: 35px; height: 35px;
+	padding: 2px;
+	border-style: solid; border-width: 1px;
+	text-align: left;
+}
+
+.display {text-align: right; font-size: 20px }
+.submit { font-size: 20px; width:150px; }
+.browse { font-size: 20px; width:300px }
+.ltype { font-size: 30px;}
+.rtype { font-size: 30px; color: red}
+.stype { font-size: 10px; }

@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en_US" xml:lang="en_US">
+<!--
+ * Created on 31-Aug-2005
+ **********************************************************************
+ * Copyright (c)- 2005 - Bronstee.com Software & Services and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the 
+ * GNU General Public License (GPL) Version 2, June 1991, 
+ * which accompanies this distribution, and is available at: 
+ * http://www.opensource.org/licenses/gpl-license.php
+ * 
+ * Contributors:
+ * Ghica van Emde Boas - original author, Sept 2005
+ * <contributor2> - <description of contribution>
+ *     ...
+ *********************************************************************
+-->
+ <head>
+  <title>Help for PHP Sudoku Solver</title>
+  <link rel="stylesheet" type="text/css" href="sudoku.css" />
+ </head>
+ <body>
+<h2>The Sudoku Puzzle Solver</h2>
+<h3>Sudoku</h3>
+From <a href="http://en.wikipedia.org/wiki/Sudoku" target="_blank">Wikipedia</a>, the free encyclopedia:
+<br/> 
+A <b>Sudoku</b> puzzle (Sudoku is Japanese for <i>unique number</i>), 
+sometimes spelled Su Doku, is a placement puzzle, also known as <i>Number Place</i>
+in the United States. 
+<br/>
+The aim of the puzzle is to enter a numeral from 1 through 9 in each cell of a grid, 
+most frequently a 9×9 grid made up of 3×3 subgrids (called "regions"), 
+starting with various numerals given in some cells (the "givens"). 
+Each row, column and region must contain only one instance of each numeral. 
+Completing the puzzle requires patience and logical ability. 
+Its grid layout is reminiscent of other newspaper puzzles like crosswords and chess problems. 
+Sudoku initially became popular in Japan in 1986 and attained international popularity in 2005.
+<h3>How to start the Solver</h3>
+Start the solver by typing something like <b>http://your-url/sudoku/sudolu.php</b>
+in the addressbar of your browser. You should see something like:
+<br/><img src="su-init.jpg" width=600><br/>
+<h3>Example Sudoku's</h3>
+There is an abundance of sudoku's in many newspapers, magazines and on the web.
+Most of them are copyrighted and therefore I cannot include them here.
+<br/>A very good website about Sudoku's (<a href="http://www.puzzle.jp/" target="_blank">http://www.puzzle.jp/</a>)
+has some free samples, and you can subscribe for daily new puzzles.
+<p>I found also a site that generates Sudoku's for you, 
+<a href="http://www.opensky.ca/~jdhildeb/software/sudokugen/" target="blank">http://www.opensky.ca/~jdhildeb/software/sudokugen/<a>, 
+where the software behind it is 
+<a href="http://sourceforge.net/projects/gnome-sudoku/" target="blank">http://sourceforge.net/projects/gnome-sudoku/<a>.
+These are open source, and therefore I could include an easy and a hard Sudoku for you.
+<h4>Sudoku saved file format</h4>
+The Sudoku's can be defined as a comma-separated file, either be exporting a spreadsheet as .csv file
+or by entering the puzzle in the Solver grid and press the <i>show csv</i> button.
+<h3>Upload a Sudoku</h3>
+
+  <ul>
+    <li>Press the <i>Browse...</i> Button.
+    </li>
+    <li>Choose a local file that contains a Sudoku definition in comma-separated format and press open.
+    </li>
+    <li>Press the <i>upload</i> button.
+    </li>
+  </ul>
+<br/><img src="screenshot1.jpg" width=600><br/>  
+<h3>Enter a Sudoku</h3>
+You can enter the Sudoku values directly into the grid.
+<br/>Save your work by pressing the <i>show csv</i> button, and copy-paste the
+comma-separated Sudoku values (highlight, press Ctrl-c, create a text file, open it, paste with Ctrl-v and save).
+<h3>Solve a Sudoku</h3>
+The objective of this Sudoku solver is to follow as much as possible the human way of reasoning. 
+We did not implement any brute-force or tree waliking algorithms. You can also edit the Sudoku values or the set
+of possible values after each step and continue the solution.
+<h4>The Value-Check Action</h4>
+This action is useful if you would like to solve the Sudoku yourself, but you would like to avoid the pain
+of finding all possible values for each field. 
+<br/>This action iterates over each field and calculates the possible values. If this is a single value, that will
+lead to updatting the possible values already found. The Solver makes only one pass and does no recursion
+after having found a value. 
+Newly found values are shown in red.
+<br/><img src="screenshot2.jpg" width=600><br/>  
+<h4>The Unique-Check Action</h4>
+The solver performs first the value-check action, and then it looks at every row, column or block
+to find values that occur only once in the possible value sets. 
+Newly found values are shown in red. By repeatedly pressing this button you can solve most
+Sudoku's found in newspapers.
+<h4>The RC-Check Action</h4>
+This action first performs the Unique-check action and then checks in each block whether
+there are values that occur only in one row or one column. In this case this value cannot appear in the 
+same row or column in the other two blocks that contain part of the row/column. 
+The possible values are adjusted accordingly.
+<br/><img src="screenshot3.jpg" width=600><br/>  
+<h4>The Pair-Check Action</h4>
+This action first performs the Unique-check action and then checks in each row, column or block, whether
+there are two pairs of the same possible values. In this case these values cannot appear in the 
+other fields of the same row, column or block. 
+The possible values are adjusted accordingly.
+<h4>What if the Sudoku cannot be solved with these rules?</h4>
+There are Sudoku's that cannot be solved with these rules. the included "very hard" example 
+is of that kind. After you have applied all rules until you can find no new values, you could try
+brute force. Take away one value for a pair (you have 50% chance that it works) and try again.
+If it fails, you can reload the sudoku and try the other value.
+<br/>A check is not implemented yet to see if a solution is valid, therefore you should do this check
+yourself. 
+<h3>The Clear, Reset and Undo Buttons</h3>
+<i>Clear</i> clears the Sudoku matrix.
+<br/><i>Reset</i> sets the fields in the Sudoku matrix to the values they had after the latest file upload.
+<br/><i>Undo</i> restores the state to the state before the last action-button press.
+<h3>Future</h3>
+There are some things left to do:
+  <ul>
+    <li>Implement the <i>brute force</i> rule.
+    </li>
+    <li>Implement a finish check to see if a solution is valid</li>
+    <li>If someone finds a rule that could be implemented to solve a "very hard" Sudoku, please
+let me know (or better, send me the implementation).
+    </li>
+  </ul>
+
+</body>
+</html>
